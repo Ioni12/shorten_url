@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "http://localhost:8080";
+const API = "https://shorten-url-2-juwn.onrender.com";
 
 /* ── helpers ──────────────────────────────────────────── */
 function useToken() {
