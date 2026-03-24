@@ -25,6 +25,9 @@ public class SecurityConfig {
     @Value("${app.cors.allowed-origins}")
     private List<String> allowedOrigins;
 
+    @Value("${app.frontend.url}")
+    private String frontendUrl;
+
     public SecurityConfig(JwtFilter jwtFilter, AuthService authService) {
         this.jwtFilter = jwtFilter;
         this.authService = authService;
@@ -52,7 +55,7 @@ public class SecurityConfig {
                                     (org.springframework.security.oauth2.core.user.OAuth2User) authentication.getPrincipal();
                             String email = oAuth2User.getAttribute("email");
                             String token = authService.loginOrRegisterGoogle(email);
-                            response.sendRedirect("https://shorten-url-alpha.vercel.app/?token=" + token);
+                            response.sendRedirect(frontendUrl + "?token=" + token);
                         })
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
