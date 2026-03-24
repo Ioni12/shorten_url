@@ -52,7 +52,7 @@ public class SecurityConfig {
                                     (org.springframework.security.oauth2.core.user.OAuth2User) authentication.getPrincipal();
                             String email = oAuth2User.getAttribute("email");
                             String token = authService.loginOrRegisterGoogle(email);
-                            response.sendRedirect("http://localhost:5173?token=" + token);
+                            response.sendRedirect("https://shorten-url-alpha.vercel.app/?token=" + token);
                         })
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
