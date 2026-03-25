@@ -47,6 +47,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/google/callback").permitAll()
                         .requestMatchers("/login/oauth2/**", "/oauth2/**").permitAll()
                         .requestMatchers("/{code}").permitAll()
+                        .requestMatchers("/health", "/time").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
